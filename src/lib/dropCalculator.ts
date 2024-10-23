@@ -27,16 +27,20 @@ export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
   return mess;
 };
 
+interface calculateCurrentProbabilityProps {
+  dropRate: number | undefined;
+  attempts: number;
+}
 // Funzione per calcolare la probabilità attuale
-export const calculateCurrentProbability = (
-  dropRate: number,
-  attempts: number
-) => {
-  if (dropRate <= 0 || attempts <= 0) return 0; // Probabilità 0 se dropRate è 0 o tentativi <= 0
+export const calculateCurrentProbability = ({
+  dropRate,
+  attempts,
+}: calculateCurrentProbabilityProps) => {
+  if (dropRate === undefined || dropRate <= 0 || attempts <= 0) return 0; // Probabilità 0 se dropRate è 0 o tentativi <= 0
 
   const x = dropRate / 100; // Converti la percentuale di drop in decimale
   const noDropProb = 1 - x; // Probabilità di non droppare in un singolo tentativo
   const currentProb = 1 - Math.pow(noDropProb, attempts); // Calcola la probabilità cumulativa
 
-  return currentProb * 100; // Converti in percentuale
+  return (currentProb * 100).toFixed(2); // Converti in percentuale
 };
