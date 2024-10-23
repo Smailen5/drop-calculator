@@ -1,3 +1,5 @@
+import { CalculatorTemplate } from "./components/template/CalculatorTemplate";
+
 export const App = () => {
-  return <div>App</div>;
+  return <CalculatorTemplate/>;
 };
