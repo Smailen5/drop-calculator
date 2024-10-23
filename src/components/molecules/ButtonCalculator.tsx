@@ -2,16 +2,14 @@ import { dropCalculator } from "@/lib/dropCalculator";
 import { Result } from "../atoms/Result";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import { useGlobalContext } from "@/lib/context";
 
-interface ButtonCalculatorProps {
-  dropRate: number | null;
-}
-
-export const ButtonCalculator = ({ dropRate }: ButtonCalculatorProps) => {
+export const ButtonCalculator = () => {
+  const { dropRate } = useGlobalContext();
   const [result, setResult] = useState<string | null>(null);
 
   const handleClick = () => {
-    if (dropRate !== null) {
+    if (dropRate !== undefined) {
       const calculationResult = dropCalculator(dropRate);
       setResult(calculationResult);
     }
