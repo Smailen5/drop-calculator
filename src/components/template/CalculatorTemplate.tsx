@@ -1,13 +1,12 @@
-import { Header } from "../atoms/Header";
-import { Layout } from "../atoms/Layout";
+import { HeaderText } from "../atoms/HeaderText";
+import { Calculator } from "../organisms/Calculator";
+
 
 export const CalculatorTemplate = () => {
   return (
     <>
-    <Header/>
-    <Layout>
-      <div>CalculatorTemplate</div>
-    </Layout>
+      <HeaderText/>
+      <Calculator/>
     </>
   );
 };
