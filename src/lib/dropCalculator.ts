@@ -1,7 +1,7 @@
 export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
-  if(dropRate === 0 || dropRate < 0 || dropRate > 99 ){
-    const mess = "inserisci un valore valido"
-    return mess
+  if (dropRate === 0 || dropRate < 0 || dropRate > 99) {
+    const mess = "inserisci un valore valido";
+    return mess;
   }
   const x = dropRate / 100; // Converti la percentuale di drop in decimale
   const y = 1 / x; // Numero di facce del dado
@@ -27,5 +27,16 @@ export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
   return mess;
 };
 
+// Funzione per calcolare la probabilità attuale
+export const calculateCurrentProbability = (
+  dropRate: number,
+  attempts: number
+) => {
+  if (dropRate <= 0 || attempts <= 0) return 0; // Probabilità 0 se dropRate è 0 o tentativi <= 0
 
+  const x = dropRate / 100; // Converti la percentuale di drop in decimale
+  const noDropProb = 1 - x; // Probabilità di non droppare in un singolo tentativo
+  const currentProb = 1 - Math.pow(noDropProb, attempts); // Calcola la probabilità cumulativa
 
+  return currentProb * 100; // Converti in percentuale
+};
