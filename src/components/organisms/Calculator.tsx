@@ -1,4 +1,4 @@
-import { dropCalculator } from "@/lib/dropCalculator";
+import { useState } from "react";
 import { ButtonCalculator } from "../molecules/ButtonCalculator";
 import { InputDrop } from "../molecules/InputDrop";
 import {
@@ -10,10 +10,9 @@ import {
 } from "../ui/card";
 
 export const Calculator = () => {
-    const mess = dropCalculator(15)
-    console.log(mess);
-    
-    
+  const [dropRate, setDropRate] = useState<number | null>(null);
+  //   console.log(dropRate);
+
   return (
     <>
       <Card className="w-full">
@@ -22,11 +21,10 @@ export const Calculator = () => {
           <CardDescription>Calcola la probabilita di drop</CardDescription>
         </CardHeader>
         <CardContent className="">
-          <InputDrop />
-          <InputDrop />
+          <InputDrop value={dropRate} setValue={setDropRate} />
         </CardContent>
         <CardFooter>
-          <ButtonCalculator />
+          <ButtonCalculator dropRate={dropRate} />
         </CardFooter>
       </Card>
     </>

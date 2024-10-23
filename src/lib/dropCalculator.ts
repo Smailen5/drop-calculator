@@ -1,4 +1,8 @@
 export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
+  if(dropRate === 0 || dropRate < 0 || dropRate > 99 ){
+    const mess = "inserisci un valore valido"
+    return mess
+  }
   const x = dropRate / 100; // Converti la percentuale di drop in decimale
   const y = 1 / x; // Numero di facce del dado
   const z = Math.round(y); // Arrotondiamo il numero di facce
@@ -7,7 +11,7 @@ export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
   const noDropProb = (z - 1) / z;
 
   // Funzione per trovare il numero di tentativi necessari per raggiungere la probabilità target
-  let attempts = 0
+  let attempts = 0;
   let cumulativeProb = 0;
 
   while (cumulativeProb < targetProb) {
@@ -22,6 +26,3 @@ export const dropCalculator = (dropRate: number, targetProb = 0.9) => {
 
   return mess;
 };
-
-
-

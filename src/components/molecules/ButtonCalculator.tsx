@@ -1,12 +1,29 @@
+import { dropCalculator } from "@/lib/dropCalculator";
 import { Result } from "../atoms/Result";
 import { Button } from "../ui/button";
+import { useState } from "react";
 
-export const ButtonCalculator = () => {
+interface ButtonCalculatorProps {
+  dropRate: number | null;
+}
+
+export const ButtonCalculator = ({ dropRate }: ButtonCalculatorProps) => {
+  const [result, setResult] = useState<string | null>(null);
+
+  const handleClick = () => {
+    if (dropRate !== null) {
+      const calculationResult = dropCalculator(dropRate);
+      setResult(calculationResult);
+    }
+  };
+
   return (
     <>
-      <div className="flex flex-col gap-4">
-        <Button>Calcola</Button>
-        <Result />
+      <div className="space-y-4 w-full">
+        <Button onClick={() => handleClick()} className="w-full">
+          Calcola
+        </Button>
+        {result && <Result result={result} />}
       </div>
     </>
   );
