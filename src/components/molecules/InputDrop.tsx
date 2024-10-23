@@ -1,7 +1,6 @@
 import { useGlobalContext } from "@/lib/context";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { useEffect } from "react";
 
 export const InputDrop = () => {
   const { dropRate, setDropRate } = useGlobalContext();
@@ -11,10 +10,6 @@ export const InputDrop = () => {
 
     setDropRate(value === "" ? undefined : Number(value));
   };
-
-  useEffect(() => {
-    console.log(dropRate);
-  }, [dropRate]);
 
   return (
     <div className="even:mt-4">
