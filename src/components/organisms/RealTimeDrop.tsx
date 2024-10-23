@@ -1,3 +1,5 @@
+import { useGlobalContext } from "@/lib/context";
+import { calculateCurrentProbability } from "@/lib/dropCalculator";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import {
@@ -7,25 +9,19 @@ import {
   CardFooter,
   CardHeader,
 } from "../ui/card";
-import { useGlobalContext } from "@/lib/context";
-import { calculateCurrentProbability } from "@/lib/dropCalculator";
 
 export const RealTimeDrop = () => {
-  const { dropRate } = useGlobalContext();
-
   const [value, setValue] = useState(0);
 
-  const increment = () => {
-    setValue((prev) => prev + 1);
-  };
+  const { dropRate } = useGlobalContext();
 
-  const decrement = () => {
-    setValue((prev) => prev - 1);
-  };
+  const increment = () => setValue((prev) => prev + 1);
 
-  if (value < 0) {
-    setValue(0);
-  }
+  const decrement = () => setValue((prev) => prev - 1);
+
+  const reset = () => setValue(0);
+
+  if (value < 0) setValue(0);
 
   return (
     <Card className="w-full">
@@ -40,9 +36,22 @@ export const RealTimeDrop = () => {
           {calculateCurrentProbability({ dropRate, attempts: value })}%
         </p>
       </CardContent>
-      <CardFooter>
-        <Button onClick={increment}>incrementa</Button>
-        <Button onClick={decrement}>decrementa</Button>
+      <CardFooter className="flex-col">
+        <div className="flex gap-6 w-full mb-6">
+          <Button
+            onClick={decrement}
+            variant={"destructive"}
+            className="flex-1"
+          >
+            decrementa
+          </Button>
+          <Button onClick={increment} className="flex-1">
+            incrementa
+          </Button>
+        </div>
+        <Button onClick={reset} className="w-full">
+          reset
+        </Button>
       </CardFooter>
     </Card>
   );
