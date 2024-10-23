@@ -1,5 +1,5 @@
-import { CalculatorTemplate } from "./components/template/CalculatorTemplate";
+import { CalculatorPage } from "./components/page/CalculatorPage";
 
 export const App = () => {
-  return <CalculatorTemplate/>;
+  return <CalculatorPage />;
 };
