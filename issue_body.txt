@@ -1,0 +1,26 @@
+### 📋 Descrizione
+
+Implementare una documentazione tecnica completa per il progetto "Drop Calculator" utilizzando Docusaurus.
+
+### 📋 Motivazione
+
+Attualmente il progetto manca di una documentazione chiara che spieghi lo scopo dell'applicazione, come utilizzarla e i dettagli tecnici dietro i calcoli probabilistici.
+
+### 📋 Descrizione dettagliata
+
+L'implementazione prevede:
+1. **Setup Docusaurus**: Inizializzazione di un sito Docusaurus nella cartella .
+2. **Contenuti**:
+    - Introduzione all'app.
+    - Guida all'installazione e avvio locale.
+    - Spiegazione della logica probabilistica utilizzata in .
+
+### 📋 Casi di uso tipici
+
+- Un utente vuole capire come funziona il calcolo delle probabilità di drop.
+- Uno sviluppatore vuole contribuire al progetto e ha bisogno di documentazione tecnica.
+
+### 📝 Note aggiuntive
+
+- Assicurarsi che la documentazione sia chiara e facile da consultare.
+- Creato da MondayBot1
