@@ -4,15 +4,15 @@ Il Drop Calculator è un'applicazione React + TypeScript progettata per calcolar
 
 ## Logica di Calcolo
 
-Il core dell'applicazione si trova in .
+Il core dell'applicazione si trova in src/lib/dropCalculator.ts.
 
 ### Funzionamento
-La funzione  calcola quanti tentativi sono necessari per raggiungere una probabilità target (default 90%) di ottenere almeno un drop.
+La funzione dropCalculator calcola quanti tentativi sono necessari per raggiungere una probabilità target (default 90%) di ottenere almeno un drop.
 
-1. **Conversione**: Il  (percentuale) viene convertito in decimale ().
-2. **Probabilità di insuccesso**: Si calcola .
-3. **Iterazione**: Si incrementano i tentativi finché la probabilità cumulativa di successo () non raggiunge la soglia target.
+1. Conversione: Il dropRate (percentuale) viene convertito in decimale (x = dropRate / 100).
+2. Probabilità di insuccesso: Si calcola noDropProb = 1 - x.
+3. Iterazione: Si incrementano i tentativi finché la probabilità cumulativa di successo (1 - Math.pow(noDropProb, attempts)) non raggiunge la soglia target.
 
 ### Calcolo Probabilità Attuale
-La funzione  calcola invece la probabilità di successo dato un numero specifico di tentativi già effettuati:
-
+La funzione calculateCurrentProbability calcola invece la probabilità di successo dato un numero specifico di tentativi già effettuati:
+1 - Math.pow(1 - dropRate/100, attempts)
